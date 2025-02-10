@@ -2,9 +2,10 @@
   {
     "id": 1739200896850,
     "name": "Ordinateur",
-    "price": 1500,
+    "price": 1200,
     "createdAt": 1739200896850,
-    "updatedAt": 1739200896850
+    "updatedAt": 1739215659963,
+    "quantity": 3
   },
   {
     "id": 1739201435594,
@@ -21,5 +22,51 @@
     "internalReference": "REF123",
     "createdAt": 1739201435594,
     "updatedAt": 1739201918133
+  },
+  {
+    "id": 1739215094387,
+    "name": "Laptop",
+    "price": 1200,
+    "description": "Ordinateur portable",
+    "image": "laptop.png",
+    "category": "Électronique",
+    "quantity": 10,
+    "internalReference": "REF123",
+    "shellId": 1,
+    "inventoryStatus": "INSTOCK",
+    "rating": 4.5,
+    "createdAt": 1739215094387,
+    "updatedAt": 1739215094387
+  },
+  {
+    "id": 1739215397810,
+    "name": "Laptop",
+    "price": 1200,
+    "description": "Ordinateur portable",
+    "image": "laptop.png",
+    "category": "Électronique",
+    "quantity": 10,
+    "internalReference": "REF123",
+    "shellId": 1,
+    "inventoryStatus": "INSTOCK",
+    "rating": 4.5,
+    "createdAt": 1739215397810,
+    "updatedAt": 1739215397810
+  },
+  {
+    "id": 1739215789560,
+    "code": "P123",
+    "name": "Ordinateur",
+    "description": "PC portable",
+    "image": "lien.png",
+    "category": "Électronique",
+    "price": 1500,
+    "quantity": 5,
+    "internalReference": "REF123",
+    "shellId": 1,
+    "inventoryStatus": "INSTOCK",
+    "rating": 4.5,
+    "createdAt": 1739215789560,
+    "updatedAt": 1739215789560
   }
 ]
