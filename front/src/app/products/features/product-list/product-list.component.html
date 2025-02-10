@@ -2,14 +2,32 @@
 
 <p-button label="Créer produit" (onClick)="onCreate()" class="block text-center"/>
 
+<div class="flex gap-4 ml-4">
+    <div class="form-field mb-4">
+        <label for="searchTerm">Rechercher un produit</label>
+        <input pInputText type="text" [(ngModel)]="searchTerm" (input)="filterProducts()">
+    </div>
+
+    <div class="form-field mb-4">
+        <label for="minPrice">Prix min</label>
+        <p-inputNumber [(ngModel)]="minPrice" (ngModelChange)="filterProducts()"></p-inputNumber>
+    </div>
+
+    <div class="form-field mb-4">
+        <label for="maxPrice">Prix max</label>
+        <p-inputNumber [(ngModel)]="maxPrice" (ngModelChange)="filterProducts()"></p-inputNumber>
+    </div>
+</div>
+
 <p-dataView #dv [value]="products()">
     <ng-template pTemplate="list" let-products>
-        @for (product of products; track product) {
+        @for (product of filteredProducts; track product) {
             <p-card class="block mb-2">
                 <span class="font-medium text-secondary text-sm">{{ product.category }}</span>
 
                 <div class="text-lg font-medium text-900 mt-2">{{ product.name }}</div>
                 <p class="text-sm font-medium text-secondary mt-2">{{ product.description }}</p>
+                <p class="text-sm font-medium text-secondary mt-2">Quantité restante : {{ product.quantity }}</p>
                 <span class="text-2xl font-bold">{{ product.price }}€</span>
 
                 <ng-template pTemplate="footer">
