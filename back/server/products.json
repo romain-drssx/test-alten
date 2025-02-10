@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1739200896850,
+    "name": "Ordinateur",
+    "price": 1500,
+    "createdAt": 1739200896850,
+    "updatedAt": 1739200896850
+  },
+  {
+    "id": 1739201435594,
+    "image": "lien.png",
+    "rating": 4.5,
+    "description": "PC portable",
+    "price": 1400,
+    "category": "�lectronique",
+    "inventoryStatus": "INSTOCK",
+    "name": "Ordinateur",
+    "quantity": 3,
+    "shellId": 1,
+    "code": "P123",
+    "internalReference": "REF123",
+    "createdAt": 1739201435594,
+    "updatedAt": 1739201918133
+  }
+]
