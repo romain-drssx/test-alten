@@ -1,0 +1,33 @@
+<div class="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
+    <h2 class="text-xl font-bold mb-4">Contactez-nous</h2>
+
+    <form [formGroup]="contactForm" (ngSubmit)="sendMessage()">
+        <div class="form-field mb-4">
+            <label for="name">Email</label>
+            <input pInputText type="email" id="email" formControlName="email" autocomplete="off" required>
+        
+            <p *ngIf="contactForm.controls.email.invalid && contactForm.controls.email.touched" class="font-bold text-red-500 text-sm">
+                Email valide requis.
+            </p>
+        </div>
+
+        <div class="form-field mb-4">
+            <label for="message">Message :</label>
+            <textarea pInputTextarea id="message" formControlName="message" rows="5" cols="30" (input)="updateMessageLength()"></textarea>
+            <p class="text-gray-500 text-sm text-right">
+                {{ messageLength }} / {{ maxLength }} caractères
+            </p>
+
+            <p *ngIf="contactForm.controls.message.invalid && contactForm.controls.message.touched"
+               class="font-bold text-red-500 text-sm">
+                Le message est requis et ne doit pas dépasser 300 caractères.
+            </p>
+        </div>      
+
+        <p-button type="submit" [disabled]="!contactForm.valid" label="Envoyer" severity="success"/>
+    </form>
+
+    <p *ngIf="messageSend" class="text-green-500 mt-4">
+        Demande de contact envoyée avec succès.
+    </p>
+</div>
