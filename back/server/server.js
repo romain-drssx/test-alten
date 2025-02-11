@@ -213,25 +213,30 @@ app.delete("/products/:id", authenticateToken, isAdmin, (req, res) => {
 
 
 // la possibilité pour un utilisateur de gérer un panier d'achat pouvant contenir des produits
-app.post("/cart", authenticateToken, (req, res) => {
-  const userCart = carts[req.user.email] || [];
-  userCart.push(req.body);
-  carts[req.user.email] = userCart;
-  res.json({ message: "Produit ajouté au panier", cart: userCart });
-});
-app.get("/cart", authenticateToken, (req, res) => {
-  res.json(carts[req.user.email] || []);
-});
+app.post("/account/:id/cart", authenticateToken, (req, res) => {
+  if (!req.body || !req.body.id) {
+    return res.status(400).json({ error: "Produit invalide" });
+  }
 
-
-//  la possibilité pour un utilisateur de gérer une liste d'envie pouvant contenir des produits.
-app.post("/wishlist", authenticateToken, (req, res) => {
-  const userWishlist = wishlists[req.user.email] || [];
-  userWishlist.push(req.body);
-  wishlists[req.user.email] = userWishlist;
-  res.json({ message: "Produit ajouté à la liste d'envie", wishlist: userWishlist });
+  req.user.cart.push(req.body);
+  res.json({ message: "Produit ajouté au panier", cart: req.user.cart });
 });
 
-app.get("/wishlist", authenticateToken, (req, res) => {
-  res.json(wishlists[req.user.email] || []);
+app.get("/account/:id/cart", authenticateToken, (req, res) => {
+  res.json(req.user.cart);
+});
+
+
+//  la possibilité pour un utilisateur de gérer une liste d'envie pouvant contenir des produits
+app.post("/account/:id/wishlist", authenticateToken, (req, res) => {
+  if (!req.body || !req.body.id) {
+    return res.status(400).json({ error: "Produit invalide" });
+  }
+
+  req.user.wishlist.push(req.body);
+  res.json({ message: "Produit ajouté à la liste d'envie", wishlist: req.user.wishlist });
+});
+
+app.get("/account/:id/wishlist", authenticateToken, (req, res) => {
+  res.json(req.user.wishlist);
 });
